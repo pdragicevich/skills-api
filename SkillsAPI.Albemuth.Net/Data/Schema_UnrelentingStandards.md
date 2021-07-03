@@ -1,5 +1,7 @@
+---
 area: Schema Therapy
 section: Schema
 title: Unrelenting standards
-content: |
-  Unrelenting standards
+summary: Unrelenting standards
+---
+Unrelenting standards

@@ -2,7 +2,6 @@
 {
     public class SkillDetail : SkillSummary
     {
-        public string Content { get; set; }
-
+        public string? Content { get; set; }
     }
 }

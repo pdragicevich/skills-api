@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace SkillsAPI.Albemuth.Net
 {
@@ -19,7 +21,12 @@ namespace SkillsAPI.Albemuth.Net
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<Contracts.IAppSettings, Services.AppSettings>();
             services.AddSingleton<Contracts.ISkillsRepo, Services.SkillsRepo>();
+            services.AddSingleton(serviceProvider => new DeserializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .Build());
+            services.AddSingleton<Contracts.IFileIO, Services.PhysicalFileIO>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

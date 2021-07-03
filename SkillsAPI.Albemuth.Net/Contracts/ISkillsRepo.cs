@@ -6,12 +6,7 @@ namespace SkillsAPI.Albemuth.Net.Contracts
 {
     public interface ISkillsRepo
     {
-
         Task<IList<SkillSummary>> GetSkillSummaries();
-
-
-        Task<SkillDetail> GetSkillByID(string id);
-
-
+        Task<SkillDetail?> GetSkillByID(string id);
     }
 }

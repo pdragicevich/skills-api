@@ -24,12 +24,25 @@ namespace SkillsAPI.Albemuth.Net.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<SkillSummary>> Get()
+        [Route("")]
+        public async Task<IEnumerable<SkillSummary>> GetSummaryList()
         {
             return await skillsRepo.GetSkillSummaries();
         }
 
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<SkillDetail>> GetDetail(string id)
+        {
+            var detail = await skillsRepo.GetSkillByID(id);
+            if (detail == null)
+            {
+                logger.LogWarning($"GetDetail 404 for {id}");
+                return NotFound();
+            }
+            return Ok(detail);
+        }
 
 
 
