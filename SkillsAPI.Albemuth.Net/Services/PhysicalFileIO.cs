@@ -29,4 +29,3 @@ namespace SkillsAPI.Albemuth.Net.Services
         }
     }
 }
-

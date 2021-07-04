@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using SkillsAPI.Albemuth.Net.Contracts;
-using SkillsAPI.Albemuth.Net.Extensions;
 using SkillsAPI.Albemuth.Net.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 
@@ -17,20 +14,21 @@ namespace SkillsAPI.Albemuth.Net.Services
         private readonly IAppSettings appSettings;
         private readonly IDeserializer yamlDeserialiser;
         private readonly IFileIO fileIO;
+        private readonly ISkillsFileReader skillsFileReader;
 
         public SkillsRepo(
             ILogger<SkillsRepo> logger,
             IAppSettings appSettings,
             IFileIO fileIO,
+            ISkillsFileReader skillsFileReader,
             IDeserializer yamlDeserialiser)
         {
             this.logger = logger;
             this.appSettings = appSettings;
             this.fileIO = fileIO;
+            this.skillsFileReader = skillsFileReader;
             this.yamlDeserialiser = yamlDeserialiser;
         }
-
-
 
         public async Task<IList<SkillSummary>> GetSkillSummaries()
         {
@@ -47,15 +45,12 @@ namespace SkillsAPI.Albemuth.Net.Services
             return skills;
         }
 
-
         public async Task<SkillDetail?> GetSkillByID(string id)
         {
             var path = BuildFilePath(id);
             var detail = await ReadFileDetail(path);
             return detail;
         }
-
-
 
         private Task<IEnumerable<string>> GetSkillsFiles()
         {
@@ -64,9 +59,6 @@ namespace SkillsAPI.Albemuth.Net.Services
                 return fileIO.GetAllFiles();
             });
         }
-
-
-
 
         private string BuildFilePath(string id)
         {
@@ -78,74 +70,9 @@ namespace SkillsAPI.Albemuth.Net.Services
             return Path.GetFileNameWithoutExtension(path);
         }
 
-
-        private async Task<MarkdownContents?> ReadFile(string path, bool frontMatterOnly)
-        {
-            if (!fileIO.FileExists(path))
-            {
-                return null;
-            }
-
-            StreamReader? reader = null;
-            try
-            {
-                reader = fileIO.OpenFileStreamReader(path);
-
-                var frontMatterBuilder = new StringBuilder();
-                var contentsBuilder = frontMatterOnly ? null : new StringBuilder();
-                var inFrontMatter = false;
-                var hasFrontMatter = false;
-
-                string? line;
-                while ((line = await reader.ReadLineAsync()) != null)
-                {
-                    if (line.GuardedTrim() == Const.FrontMatterDelimiter)
-                    {
-                        inFrontMatter = !inFrontMatter;
-                    }
-                    else if (inFrontMatter)
-                    {
-                        hasFrontMatter = true;
-                        frontMatterBuilder.AppendLine(line);
-                    }
-                    else if (frontMatterOnly && hasFrontMatter)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        contentsBuilder?.AppendLine(line);
-                    }
-                }
-
-                if (!hasFrontMatter)
-                {
-                    return null;
-                }
-
-
-                return new MarkdownContents
-                {
-                    FrontMatter = frontMatterBuilder.ToString(),
-                    Contents = contentsBuilder?.ToString()
-                };
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "ReadFile EXCEPTION");
-            }
-            finally
-            {
-                reader?.Dispose();
-            }
-            return null;
-        }
-
-
-
         private async Task<SkillSummary?> ReadFileSummary(string path)
         {
-            var fileContents = await ReadFile(path, frontMatterOnly: true);
+            var fileContents = await skillsFileReader.ReadFile(path, frontMatterOnly: true);
             if (fileContents == null || string.IsNullOrWhiteSpace(fileContents.FrontMatter))
             {
                 return null;
@@ -157,10 +84,9 @@ namespace SkillsAPI.Albemuth.Net.Services
             return deserialised;
         }
 
-
         private async Task<SkillDetail?> ReadFileDetail(string path)
         {
-            var fileContents = await ReadFile(path, frontMatterOnly: false);
+            var fileContents = await skillsFileReader.ReadFile(path, frontMatterOnly: false);
             if (fileContents == null || string.IsNullOrWhiteSpace(fileContents.FrontMatter))
             {
                 return null;

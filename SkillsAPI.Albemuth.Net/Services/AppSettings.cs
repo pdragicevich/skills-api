@@ -12,9 +12,7 @@ namespace SkillsAPI.Albemuth.Net.Services
             this.configuration = configuration;
         }
 
-
         public string DataFolder => GetSetting("AppSettings:DataFolder", ".\\Data");
-
 
         private T GetSetting<T>(string key, T defaultValue)
         {

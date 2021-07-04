@@ -30,7 +30,6 @@ namespace SkillsAPI.Albemuth.Net.Controllers
             return await skillsRepo.GetSkillSummaries();
         }
 
-
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult<SkillDetail>> GetDetail(string id)
@@ -43,9 +42,5 @@ namespace SkillsAPI.Albemuth.Net.Controllers
             }
             return Ok(detail);
         }
-
-
-
-
     }
 }

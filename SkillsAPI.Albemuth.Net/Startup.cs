@@ -22,6 +22,7 @@ namespace SkillsAPI.Albemuth.Net
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<Contracts.IAppSettings, Services.AppSettings>();
+            services.AddSingleton<Contracts.ISkillsFileReader, Services.SkillsFileReader>();
             services.AddSingleton<Contracts.ISkillsRepo, Services.SkillsRepo>();
             services.AddSingleton(serviceProvider => new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
