@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using SkillsAPI.Albemuth.Net.Contracts;
+using System.IO;
 
 namespace SkillsAPI.Albemuth.Net.Services
 {
@@ -12,7 +13,7 @@ namespace SkillsAPI.Albemuth.Net.Services
             this.configuration = configuration;
         }
 
-        public string DataFolder => GetSetting("AppSettings:DataFolder", ".\\Data");
+        public string DataFolder => GetSetting("AppSettings:DataFolder", Path.Combine(".", "Data"));
 
         private T GetSetting<T>(string key, T defaultValue)
         {
