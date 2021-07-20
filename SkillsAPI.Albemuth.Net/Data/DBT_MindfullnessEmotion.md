@@ -1,7 +1,7 @@
 ---
 area: DBT
-section: Distress Tolerance
-title: Emotional regulation
+section: Emotional regulation
+title: Mindfullness of emotion
 summary: Mindfullness of emotion
 ---
 How to be mindful of an emotion.
