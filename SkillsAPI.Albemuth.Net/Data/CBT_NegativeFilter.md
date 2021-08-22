@@ -3,6 +3,7 @@ area: CBT
 section: Cognitive Distortions
 title: Negative Filtering
 summary: Filtering out all of the positive information about a specific situation, and only allowing in the negative information
+keywords: negative filtering
 ---
 Negative Filtering is a common cognitive distortion, and most of us do it from time to time. Simply, it is filtering out all of the positive information about a specific situation, and only allowing in the negative information.
 

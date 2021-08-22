@@ -3,6 +3,7 @@ area: DBT
 section: Emotional regulation
 title: Mindfullness of emotion
 summary: Mindfullness of emotion
+keywords: mindfullness,emotion
 ---
 How to be mindful of an emotion.
 

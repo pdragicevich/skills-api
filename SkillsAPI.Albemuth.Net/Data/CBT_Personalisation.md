@@ -3,6 +3,7 @@ area: CBT
 section: Cognitive Distortions
 title: Personalisation
 summary: Personalising is where you assume responsibility for a negative even when there is no basis for doing so
+keywords: personalisation
 ---
 The personalisation thinking error involves seeing yourself as the cause of everything negative, even though you are not the one responsible. 
 This often leads to feelings of shame and guilt.

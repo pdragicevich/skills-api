@@ -3,6 +3,7 @@ area: Schema Therapy
 section: Early Maladaptive Schemas
 title: Emotional depravation
 summary: Emotional depravation schema
+keywords: emotional,depravation
 ---
  Expectation that one's desire for a normal degree of emotional support will not be adequately met by others.  The three major forms of deprivation are:
      A. Deprivation of Nurturance:  Absence of attention, affection, warmth, or companionship.

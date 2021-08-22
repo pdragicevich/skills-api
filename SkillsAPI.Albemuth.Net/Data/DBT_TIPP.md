@@ -3,6 +3,7 @@ area: DBT
 section: Distress Tolerance
 title: TIPP
 summary: Temperature, intense exercise, paired muscle relaxation, paced breathing.
+keywords: TIPP,anxiety
 ---
 * Temperature - by changing our body temperature, we can quickly decrease the intensity of an emotion.
 * Intense exercise - by engaging in intense cardio/aerobic exercise, we engage our physical body in a way that de-escalates intense emotions.

@@ -3,6 +3,7 @@ area: DBT
 section: Mindfullness
 title: Ways of being mindful
 summary: How to be mindful
+keywords: mindfullness
 ---
 What
 1. Observe

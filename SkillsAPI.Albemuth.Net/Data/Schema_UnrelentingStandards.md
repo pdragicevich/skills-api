@@ -3,6 +3,7 @@ area: Schema Therapy
 section: Early Maladaptive Schemas
 title: Unrelenting standards
 summary: Unrelenting standards schema
+keywords: unrelenting,standards
 ---
 The underlying belief that one must strive to meet very high internalized standards of behavior and performance, usually to avoid criticism. Typically results in feelings of pressure or difficulty slowing down; and in hypercriticalness toward oneself and others.  Must involve significant impairment in:  pleasure, relaxation, health, self-esteem, sense of accomplishment, or satisfying relationships.
 
