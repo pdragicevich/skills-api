@@ -5,7 +5,7 @@ title: Radical Acceptance
 summary: Radical acceptance is willingly accepting reality as it is
 keywords: radical,acceptance
 ---
-Pain + non acceptance = suffering
+**Pain + non acceptance = suffering**
 Pain + acceptance = pain, with the possibility of growth
 * It is what it is
 * Everything has a cause
