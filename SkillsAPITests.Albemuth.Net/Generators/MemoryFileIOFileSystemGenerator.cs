@@ -6,7 +6,7 @@ namespace SkillsAPITests.Albemuth.Net.Generators
     {
         public static void AddTestFileSystem1(MemoryFileIO memoryFileIO, string folder)
         {
-            memoryFileIO.FileContents.Add($"{folder}\\TIPP.md",
+            memoryFileIO.FileContents.Add($"{folder}/TIPP.md",
 @"---
 area: DBT
 section: Distress Tolerance
@@ -16,7 +16,7 @@ summary: Temperature, intense exercise, paired muscle relaxation,
 Temperature, intense exercise, paired muscle relaxation
 "
                 );
-            memoryFileIO.FileContents.Add($"{folder}\\UnrelentingStandards.md",
+            memoryFileIO.FileContents.Add($"{folder}/UnrelentingStandards.md",
 @"---
 area: Schema Therapy
 section: Schemas

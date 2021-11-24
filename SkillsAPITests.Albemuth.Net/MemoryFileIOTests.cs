@@ -15,8 +15,8 @@ namespace SkillsAPITests.Albemuth.Net
             var files = io.GetAllFiles();
 
             Assert.Collection(files,
-                item => Assert.Equal($"{Const.TestDataFolder}\\TIPP.md", item),
-                item => Assert.Equal($"{Const.TestDataFolder}\\UnrelentingStandards.md", item));
+                item => Assert.Equal($"{Const.TestDataFolder}/TIPP.md", item),
+                item => Assert.Equal($"{Const.TestDataFolder}/UnrelentingStandards.md", item));
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     internal static class Const
     {
-        public const string TestDataFolder = ".\\Data";
+        public const string TestDataFolder = "./Data";
     }
 }
