@@ -2,21 +2,20 @@
 using SkillsAPITests.Albemuth.Net.Mocks;
 using Xunit;
 
-namespace SkillsAPITests.Albemuth.Net
+namespace SkillsAPITests.Albemuth.Net;
+
+public class MemoryFileIOTests
 {
-    public class MemoryFileIOTests
+    [Fact]
+    public void TestDirectoryEnumeration()
     {
-        [Fact]
-        public void TestDirectoryEnumeration()
-        {
-            var io = new MemoryFileIO();
-            MemoryFileIOFileSystemGenerator.AddTestFileSystem1(io, Const.TestDataFolder);
+        var io = new MemoryFileIO();
+        MemoryFileIOFileSystemGenerator.AddTestFileSystem1(io, Const.TestDataFolder);
 
-            var files = io.GetAllFiles();
+        var files = io.GetAllFiles();
 
-            Assert.Collection(files,
-                item => Assert.Equal($"{Const.TestDataFolder}/TIPP.md", item),
-                item => Assert.Equal($"{Const.TestDataFolder}/UnrelentingStandards.md", item));
-        }
+        Assert.Collection(files,
+            item => Assert.Equal($"{Const.TestDataFolder}/TIPP.md", item),
+            item => Assert.Equal($"{Const.TestDataFolder}/UnrelentingStandards.md", item));
     }
 }
