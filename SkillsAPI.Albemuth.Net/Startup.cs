@@ -11,12 +11,12 @@ namespace SkillsAPI.Albemuth.Net
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+        
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -24,7 +24,7 @@ namespace SkillsAPI.Albemuth.Net
             services.AddSingleton<Contracts.IAppSettings, Services.AppSettings>();
             services.AddSingleton<Contracts.ISkillsFileReader, Services.SkillsFileReader>();
             services.AddSingleton<Contracts.ISkillsRepo, Services.SkillsRepo>();
-            services.AddSingleton(serviceProvider => new DeserializerBuilder()
+            services.AddSingleton(_ => new DeserializerBuilder()
                 .WithNamingConvention(CamelCaseNamingConvention.Instance)
                 .Build());
             services.AddSingleton<Contracts.IFileIO, Services.PhysicalFileIO>();
